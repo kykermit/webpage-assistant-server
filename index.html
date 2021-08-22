@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>API連携 表示確認用ページ</title>
+</head>
+<body>
+<p id="server-message"></p>
+<script>
+    const HOST = location.origin.replace(/^http/, 'ws');
+    const ws = new WebSocket(HOST);
+    const el = document.getElementById('server-message');
+
+    ws.onmessage = (event) => {
+        el.innerText = event.data;
+        console.log(event.data);
+    };
+</script>
+</body>
+</html>
